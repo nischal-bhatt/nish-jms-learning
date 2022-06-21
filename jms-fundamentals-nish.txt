@@ -137,6 +137,23 @@ software setup
    5, go to that folder in command line and artemis run
    
    
-   
+   jms2.0 
+
+jms1.0 needed alot of code 
+jms2.0 no need all this stuff
+
+connections and sessions clubs = JMSContext
+
+using this context can create producer and consumer 
+
+can send message and consume in single line of code 
+
+use try catch resource block -- it will close for us 
+
+
+jms2.0 solves alot of things with simple annotations 
+
+can create custom connection factories 
+
 
 
