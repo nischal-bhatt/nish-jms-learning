@@ -1,0 +1,142 @@
+what messaging is
+advantages of messaging
+why messaging? 
+what jms?
+why jms?
+
+messaging in 2 styles
+point to point
+pubsub
+
+do the above using jms1.x jms2.x
+
+jms message anatomy --> headers, properties, payload
+
+point to point messaging - load balancing in action  
+pub sub
+
+durable subs
+shared subs
+
+can filter out messages when they are received - message filter - using operators in filter exps
+
+use headers 
+
+message guarantee - acknowledgement modes 
+transaction - producer and consumer side 
+
+deploy messaging application on apps server and see java ee apis and messaging in action
+on a server as well 
+
+JMS course - 
+
+spring tool suit ide
+activemq artemis - jms provider 
+Jboss app server to run applications on application server 
+
+answer questions - 
+
+hands on + assignmentes = expert 
+
+get started 
+
+section 1 complete 
+
+what is messaging ? --> exchanging data across applications --
+app (sender)
+app (receiver)
+message itself which has the data
+messaging server (MOM) message oriented middleware 
+
+MOM provides 
+1. fault tolerance
+2. load balancing
+3. scalability
+
+popular MOMs
+activemq
+webspheremq
+
+bank teller receives cheque --> cheque sent to messaging server --> check processor will receive
+cheque thru the MOM 
+
+decoupling -- bank teller app does not know about checkprocessor app 
+
+why messaging ? - 
+heterogenous integration 
+loosely coupled  (no need to use same database)
+messaging is more reliable than webservice -- messages are not lost in queues
+reduce system bottleneck --> asynchronous processing or multiple consumers on the same queue 
+ scalability
+flexible and agile --> replace app with another app
+
+what is jms ?  - it is an api to communicate with the MOM 
+
+jms is not vendor specific 
+
+jms - specification
+    - api
+    
+api is for developers
+specification is in plain english
+
+ current version of jms is 2.0
+ earlier 1 was 1.2
+ 
+    
+    first in the demo we will see 1.x jms
+    
+    jms is for messaging what jdbc is for databases 
+    
+    
+jms 
+
+point to point - p2p - send and receive messages thru queues
+p2p - message is consumed only once and only by 1 app 
+p2p - async fire and forget
+psp - synchronous request/reply messaging
+
+
+p2p mail - send a greeting card to only 1 person 
+
+pub sub model - messages published to topic
+              - multiple apps consuming the same message
+              
+pub sub is a push model - jms provider is pushed to the subscribers 
+
+pub sub newspaper - very same copy is sent to all the homes in the town 
+
+queues vs topics
+p2p vs pub sub
+
+
+jms provider - messaging server - message oriented middleware
+
+apache activemq artemis - jms provider for this course 
+
+artemis  - create broker - which is the provider and then developers can use jms api
+to put and read messages
+
+download completed projects 
+
+slides used in the course - zip file 
+
+assignment solutions 
+
+software setup
+
+1. jdk 8
+2. STS
+3. apache active mq artemis download
+4. create the message broker in artemis 
+   steps to create message broker in artemis 
+   1. download zip - 2.6.2 version - and unzip it
+   2. navigate to bin folder using command line
+   3. artemis create 
+   4. broker will be created on the laptop
+   5, go to that folder in command line and artemis run
+   
+   
+   
+
+
