@@ -14,41 +14,60 @@ import javax.naming.NamingException;
 
 public class FirstQueue {
 
-	public static void main(String[] args)
-	{
-		//access jndi initial context
-		
+	public static void main(String[] args) {
+		// access jndi initial context
+
 		InitialContext initialContext = null;
-		
+		Connection connection = null;
+
 		try {
 			initialContext = new InitialContext();
-			ConnectionFactory cf =(ConnectionFactory) initialContext.lookup("ConnectionFactory");
-		    Connection connection = cf.createConnection();
-		    
-		    Session session = connection.createSession();
-		    
-		   Queue queue= (Queue) initialContext.lookup("queue/myQueueNish");
-		    
-		   MessageProducer producer= session.createProducer(queue);
-		    
-		   TextMessage message = session.createTextMessage("O ho ho ho");
-		   
-		   producer.send(message);
-		   
-		   MessageConsumer consumer=session.createConsumer(queue);
-		   
-		   connection.start();
-		   
-		   TextMessage msgReceived = (TextMessage) consumer.receive(5000);
-		   
-		   System.out.println(msgReceived.getText());
+			ConnectionFactory cf = (ConnectionFactory) initialContext.lookup("ConnectionFactory");
+			connection = cf.createConnection();
+
+			Session session = connection.createSession();
+
+			Queue queue = (Queue) initialContext.lookup("queue/myQueueNish");
+
+			MessageProducer producer = session.createProducer(queue);
+
+			TextMessage message = session.createTextMessage("O ho ho ho");
+
+			producer.send(message);
+
+			MessageConsumer consumer = session.createConsumer(queue);
+
+			connection.start();
+
+			TextMessage msgReceived = (TextMessage) consumer.receive(5000);
+
+			System.out.println(msgReceived.getText());
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			if (initialContext != null) {
+				try {
+					initialContext.close();
+				} catch (NamingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (JMSException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
 		}
-		
+
 	}
 }
